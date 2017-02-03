@@ -1,0 +1,43 @@
+# This file is the landice core's configuration file. It is specific to the landice
+# core, and a specific machine. Each machine will configure this file
+# differently, but it can be used to point on version of the testing
+# infrastructure at a different version of the model.
+
+
+# The namelists section describes required namelist templates that are used to
+# generate specific namelist files. In the landice core, there is only a 'forward'
+# mode template, which typically would point to the namelist.landice generated in
+# default_inputs after a successful build of the model.
+[namelists]
+forward = /usr/projects/climate/fyke/MISI_climate_variability/MPAS/src/core_landice/default_inputs/namelist.landice
+
+
+# The streams section describes required streams file templates that are used to
+# generate specific streams files. In the landice core, there is only a 'forward'
+# mode template, which generally points to the streams.landice generated in
+# default_inputs after a successful build of the model.
+[streams]
+forward = /usr/projects/climate/fyke/MISI_climate_variability/MPAS/src/core_landice/default_inputs/streams.landice
+
+# The executables section defines paths to required executables. These
+# executables are provided for use by specific test cases.
+# Full paths should be provided in order to access the executables from
+# anywhere on the machine.
+[executables]
+model = /usr/projects/climate/fyke/MISI_climate_variability/MPAS/landice_model
+mesh_converter = /usr/projects/climate/fyke/MPAS-Tools/grid_gen/mesh_conversion_tools/MpasMeshConverter.x
+cell_culler = /usr/projects/climate/fyke/MPAS-Tools/grid_gen/mesh_conversion_tools/MpasCellCuller.x
+metis = /usr/projects/climate/SHARED_CLIMATE/software/wolf/metis/5.1.0/bin/gpmetis
+grid_to_li_grid = /usr/projects/climate/fyke/MPAS-Tools/grid_gen/landice_grid_tools/create_landice_grid_from_generic_MPAS_grid.py
+periodic_hex = /usr/projects/climate/fyke/MPAS-Tools/grid_gen/periodic_hex/periodic_grid
+
+# The paths section describes paths that are used within the landice core test
+# cases.
+[paths]
+# The mesh_database and the initial_condition_database are locations where
+# meshes / initial conditions might be found on a specific machine. They can be
+# the same directory, or different directory. Additionally, if they are empty
+# some test cases might download data into them, which will then be reused if
+# the test case is run again later.
+mesh_database = /usr/projects/climate/fyke/MISI_climate_variability/MPAS/mesh_database
+initial_condition_database = NOT_CURRENTLY_USED
